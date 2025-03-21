@@ -1,11 +1,11 @@
 #include "display.h"
 
-static SDL_Window* window = NULL;
-static SDL_Renderer* renderer = NULL;
+static SDL_Window *window = NULL;
+static SDL_Renderer *renderer = NULL;
 
-static uint32_t* framebuffer = NULL;
+static uint32_t *framebuffer = NULL;
 
-static SDL_Texture* framebuffer_texture = NULL;
+static SDL_Texture *framebuffer_texture = NULL;
 
 static uint16_t window_width = 800;
 static uint16_t window_height = 800;
@@ -16,7 +16,8 @@ bool create_window(void) {
         return false;
     }
 
-    window = SDL_CreateWindow("SDL Rasterizer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_width, window_height, 0);
+    window = SDL_CreateWindow("Software Rasterizer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_width,
+                              window_height, 0);
     if (!window) {
         fprintf(stderr, "Error creating SDL window.\n");
         return false;
@@ -57,7 +58,7 @@ void render_framebuffer(void) {
             framebuffer_texture,
             NULL,
             framebuffer,
-            (int)(SCREEN_WIDTH * sizeof(uint32_t))
+            (int) (SCREEN_WIDTH * sizeof(uint32_t))
     );
     SDL_RenderCopy(renderer, framebuffer_texture, NULL, NULL);
     SDL_RenderPresent(renderer);
