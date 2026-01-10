@@ -1,12 +1,10 @@
 #include "display.h"
+#include "stdio.h"
 
 static SDL_Window *window = NULL;
 static SDL_Renderer *renderer = NULL;
-
 static uint32_t *framebuffer = NULL;
-
 static SDL_Texture *framebuffer_texture = NULL;
-
 static uint16_t window_width = 800;
 static uint16_t window_height = 800;
 
@@ -72,8 +70,8 @@ void clear_framebuffer(uint32_t color) {
 
 void fix_framerate(void) {
     static int32_t previous_frame_time = 0;
-    int time_ellapsed = SDL_GetTicks() - previous_frame_time;
-    int time_to_wait = MILLISECS_PER_FRAME - time_ellapsed;
+    int time_elapsed = SDL_GetTicks() - previous_frame_time;
+    int time_to_wait = MILLISECS_PER_FRAME - time_elapsed;
     if (time_to_wait > 0 && time_to_wait < MILLISECS_PER_FRAME) {
         SDL_Delay(time_to_wait);
     }
