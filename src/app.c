@@ -2,6 +2,7 @@
 #include "app.h"
 #include "display.h"
 #include "graphics.h"
+#include "sprite.h"
 
 bool is_running = false;
 
@@ -14,6 +15,16 @@ vec2_t vertices[4] = {
 float rotation_angle = 0.0f;
 vec2_t rotation_center = { .x = 60, .y = 60 };
 #define ROTATION_SPEED 0.02f
+
+sprite_t test_sprite;
+
+void app_init(void) {
+    sprite_load(&test_sprite, "test.png");
+}
+
+void app_cleanup(void) {
+    sprite_destroy(&test_sprite);
+}
 
 void process_input(void) {
     SDL_Event event;
@@ -38,6 +49,8 @@ void render(void) {
     vec2_t v2 = vec2_rotate(vertices[2], rotation_center, rotation_angle);
 
     draw_triangle(v0, v1, v2, 0xFF00FF00);
+
+    sprite_draw(&test_sprite, 32, 32);
 
     rotation_angle += ROTATION_SPEED;
 

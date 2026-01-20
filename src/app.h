@@ -10,7 +10,9 @@ extern vec2_t vertices[4];
 extern float rotation_angle;
 extern vec2_t rotation_center;
 
+void app_init(void);
 void process_input(void);
 void render(void);
+void app_cleanup(void);
 
 #endif

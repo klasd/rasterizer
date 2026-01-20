@@ -5,6 +5,8 @@
 
 int main(void) {
     is_running = create_window();
+    
+    app_init();
 
     while (is_running) {
         fix_framerate();
@@ -12,6 +14,7 @@ int main(void) {
         render();
     }
 
+    app_cleanup();
     destroy_window();
 
     return EXIT_SUCCESS;
