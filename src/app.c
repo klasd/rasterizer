@@ -44,13 +44,14 @@ void process_input(void) {
 void render(void) {
     clear_framebuffer(0xFF000000);
 
+    sprite_draw(&test_sprite, 0, 0);
+
     vec2_t v0 = vec2_rotate(vertices[0], rotation_center, rotation_angle);
     vec2_t v1 = vec2_rotate(vertices[1], rotation_center, rotation_angle);
     vec2_t v2 = vec2_rotate(vertices[2], rotation_center, rotation_angle);
 
     draw_triangle(v0, v1, v2, 0xFF00FF00);
 
-    sprite_draw(&test_sprite, 32, 32);
 
     rotation_angle += ROTATION_SPEED;
 
